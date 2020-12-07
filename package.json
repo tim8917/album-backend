@@ -1,0 +1,30 @@
+{
+  "name": "album-backend",
+  "version": "1.0.0",
+  "description": "Timur Aminev's test implementation",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js",
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tim8917/album-backend.git"
+  },
+  "author": "Timur Aminev <tim8917@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tim8917/album-backend/issues"
+  },
+  "homepage": "https://github.com/tim8917/album-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6",
+    "standard": "^16.0.3"
+  }
+}
