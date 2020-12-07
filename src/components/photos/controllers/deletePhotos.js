@@ -3,7 +3,7 @@ const { extractFilepaths } = require('./utils')
 const { unlink } = require('fs').promises
 const { relative } = require('path')
 
-const deletePhotos = async (req, res, next) => {
+const deletePhotos = async (req, res) => {
   const { body: buckets = [] } = req
   const filePaths = extractFilepaths(buckets)
   const deleted = []

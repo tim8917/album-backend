@@ -1,5 +1,5 @@
 const {
-  ALBUMS_DIR, ALBUMS_VIRTUAL_PATH_PREFIX, PROJECT_ROOT_DIR, SERVER_PORT
+  ALBUMS_DIR, PHOTOS_API_PATH, PROJECT_ROOT_DIR, SERVER_PORT
 } = require('../../../../constants')
 const {
   join, basename, relative, dirname, sep
@@ -45,7 +45,7 @@ const formatFilepaths =
     album: getAlbumName(filepath),
     name: basename(filepath),
     path: relative(PROJECT_ROOT_DIR, filepath),
-    raw: `http://localhost:${SERVER_PORT}${ALBUMS_VIRTUAL_PATH_PREFIX}/${relative(ALBUMS_DIR, filepath)}`
+    raw: `http://localhost:${SERVER_PORT}${PHOTOS_API_PATH}/${relative(ALBUMS_DIR, filepath)}`
   }))
 
 const extractFilepaths = flowRight(

@@ -1,7 +1,7 @@
 const { formatFilepaths } = require('./utils')
 const { flowRight, map } = require('lodash/fp')
 
-const uploadPhotosController = async (req, res, next) => {
+const uploadPhotosController = async (req, res) => {
   const { files } = req
   const formatFilesData = flowRight(
     formatFilepaths,

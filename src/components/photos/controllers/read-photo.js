@@ -3,7 +3,7 @@ const { join } = require('path')
 
 const readPhoto = async (req, res, next) => {
   const { albumName, fileName } = req.params
-  const filepath = join(ALBUMS_DIR, albumName, fileName)
+  const filepath = join(albumName, fileName)
   const options = {
     root: ALBUMS_DIR,
     dotfiles: 'deny'
@@ -12,7 +12,8 @@ const readPhoto = async (req, res, next) => {
   res.sendFile(filepath, options, (err) => {
     if (err) {
       res.status(err.status).json({
-        message: 'ERROR'
+        message: 'ERROR',
+        status: err.status
       })
     }
   })
