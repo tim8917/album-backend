@@ -1,5 +1,5 @@
 const {
-  ALBUMS_DIR, PHOTOS_API_PATH, PROJECT_ROOT_DIR, SERVER_PORT
+  ALBUMS_DIR, PHOTOS_API_PATH, PROJECT_ROOT_DIR, SERVER_PORT, SERVER_PROTOCOL, SERVER_HOST
 } = require('../../../../constants')
 const {
   join, basename, relative, dirname, sep
@@ -36,16 +36,14 @@ const getAlbumName = flowRight(
   dirname
 )
 
-const getMd5 = (string) => {
-  return createHash('md5').update(string).digest('hex')
-}
+const getMd5 = (string) => createHash('md5').update(string).digest('hex')
 
 const formatFilepaths =
   map((filepath) => ({
     album: getAlbumName(filepath),
     name: basename(filepath),
     path: relative(PROJECT_ROOT_DIR, filepath),
-    raw: `http://localhost:${SERVER_PORT}${PHOTOS_API_PATH}/${relative(ALBUMS_DIR, filepath)}`
+    raw: `${SERVER_PROTOCOL}://${SERVER_HOST}:${SERVER_PORT}${PHOTOS_API_PATH}/${relative(ALBUMS_DIR, filepath)}`
   }))
 
 const extractFilepaths = flowRight(

@@ -6,23 +6,20 @@ const {
 } = require('../components/photos/validators')
 const { uploadPhotos } = require('../components/photos/middlewares')
 const {
-  CORS_ORIGIN
+  PHOTOS_API_PATH
 } = require('../../constants')
-const cors = require('cors')
 const express = require('express')
 
 const initRoutes = (app) => {
-  app.use(cors({ origin: CORS_ORIGIN }))
-
   // FETCH endpoints
   app.get('/health', (req, res) => { res.json({ message: 'OK' }) })
-  app.get('/photos/:albumName/:fileName', readPhoto)
-  app.post('/photos/list', express.json(), listPhotosValidator, listPhotos)
+  app.get(PHOTOS_API_PATH + '/:albumName/:fileName', readPhoto)
+  app.post(PHOTOS_API_PATH + '/list', express.json(), listPhotosValidator, listPhotos)
 
   // MODIFYING endpoints
-  app.put('/photos', uploadPhotos, uploadPhotosController)
-  app.delete('/photos/:albumName/:fileName', deletePhoto)
-  app.delete('/photos', express.json(), deletePhotos)
+  app.put(PHOTOS_API_PATH, uploadPhotos, uploadPhotosController)
+  app.delete(PHOTOS_API_PATH + '/:albumName/:fileName', deletePhoto)
+  app.delete(PHOTOS_API_PATH, express.json(), deletePhotos)
 }
 
 module.exports = { initRoutes }
